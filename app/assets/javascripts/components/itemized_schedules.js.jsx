@@ -6,7 +6,7 @@ constructor(props){
       type_of_app: 'applicant',
       type_of_card: 'Amex',
       type_of_acct: 'checkings',
-      acct_balance: '0',
+      account_balance: '0',
     };
 
  
@@ -18,11 +18,6 @@ constructor(props){
     this.createItemizedCash = this.createItemizedCash.bind(this);
 
   }
-
-
-   addCash(event){
-    	console.log("Testing")
-    }
 
 handleChange(event){
     this.setState({
@@ -44,7 +39,7 @@ handleAcctChange(event){
 
 handleBalChange(event){
  	this.setState({
- 		acct_balance: event.target.value
+ 		account_balance: event.target.value
  	})
  }
 
@@ -55,18 +50,30 @@ createItemizedCash(event){
     var type_of_app = this.state.type_of_app
     var type_of_card = this.state.type_of_card
     var type_of_acct = this.state.type_of_acct
-    var acct_balance = this.state.acct_balance
+    var account_balance = this.state.account_balance
 
-    this.props.addCash({
+    var json = {
     	type_of_app: this.state.type_of_app,
     	type_of_card: this.state.type_of_card,
     	type_of_acct: this.state.type_of_acct,
-    	acct_balance: this.state.acct_balance
-    });
+    	account_balance: this.state.account_balance
+    }
 
-    console.log("down here?")
+    this.props.addCash(json);
+    console.log(json)
 
-    // this.state.itemized_cash.push({this.state})
+    fetch('http://localhost:3000/schedule_of_cashes',
+    {
+    	method: 'POST',
+    	headers: {
+    	  'Content-Type': 'application/json'
+    	},
+    	body: JSON.stringify(json)
+    }).then((response) => {
+    	console.log("this is the response")
+    	console.log(response)
+    })
+
   } 
 
 render(){
@@ -75,7 +82,6 @@ return(
 
    <div>
      <form onSubmit={this.createItemizedCash}>
-     	<h3> Itemized Schedule of Cash </h3>
       	<select value={this.state.type_of_app} onChange={this.handleChange}> 
       	    <option value='applicant'>Applicant</option>
       	    <option value='co-applicant'>Co-Applicant</option>
@@ -94,7 +100,7 @@ return(
       	</select>
       	<label>
     		Account Balance:
-    		<input  type="text" value={this.state.acct_balance} onChange={this.handleBalChange} />
+    		<input  type="text" value={this.state.account_balance} onChange={this.handleBalChange} />
   		</label>
         <input type="submit" value="Submit" />
   	</form>

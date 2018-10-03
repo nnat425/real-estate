@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 	delete '/logout' => 'sessions#destroy'  
 
 	resources :listings, only: [:index, :create, :destroy, :update]
+	resources :schedule_of_cashes, only: [:index, :create, :destroy, :update]
 
   end

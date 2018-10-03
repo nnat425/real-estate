@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_01_214341) do
+ActiveRecord::Schema.define(version: 2018_10_03_005309) do
 
   create_table "listings", force: :cascade do |t|
     t.string "address"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2018_09_01_214341) do
     t.integer "maximum_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "schedule_of_cashes", force: :cascade do |t|
+    t.string "type_of_app"
+    t.string "type_of_card"
+    t.string "type_of_acct"
+    t.string "account_balance"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_schedule_of_cashes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
