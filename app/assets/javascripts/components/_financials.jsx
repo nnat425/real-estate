@@ -3,17 +3,15 @@ class Financials extends React.Component {
 
 	constructor(props){
     super(props);
- 
 	this.state = {
 		list: []
 	}
-
 	this.addCash = this.addCash.bind(this);
-
+	this.deleteItem = this.deleteItem.bind(this);
     };
 
      componentDidMount(){
-    fetch('http://localhost:3000/schedule_of_cashes')
+    fetch('/schedule_of_cashes')
       .then((response) => {return response.json()})
       .then((data) => {this.setState({ list: data }) });
   	}
@@ -24,10 +22,15 @@ class Financials extends React.Component {
     this.setState({list:newArray})
 	}
 
+	deleteItem(index){
+	this.state.list.splice(index,1);
+	this.setState({list:this.state.list})
+	}
+
 	render(){
     return(
       <div>
-        <ItemizedSchedulesOfCashList cashlist={this.state.list} />
+        <ItemizedSchedulesOfCashList deleteItem={this.deleteItem} cashlist={this.state.list} />
         <ItemiziedSchedules addCash={this.addCash} />
       </div>
     )
