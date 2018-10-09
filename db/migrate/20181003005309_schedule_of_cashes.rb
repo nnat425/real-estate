@@ -4,7 +4,7 @@ class ScheduleOfCashes < ActiveRecord::Migration[5.2]
   	  t.string :type_of_app 
   	  t.string :type_of_card 
   	  t.string :type_of_acct
-  	  t.string :account_balance 
+  	  t.integer :account_balance 
   	  t.references :user
   	  t.timestamps  
   	end 

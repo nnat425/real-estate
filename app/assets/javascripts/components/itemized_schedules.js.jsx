@@ -6,10 +6,8 @@ class ItemiziedSchedules extends React.Component {
       type_of_app: 'applicant',
       type_of_card: 'Amex',
       type_of_acct: 'checkings',
-      account_balance: '0',
+      account_balance: 0,
     };
-
-
 
     this.handleChange = this.handleChange.bind(this);
     this.handleCardChange = this.handleCardChange.bind(this);

@@ -4,7 +4,8 @@ class Financials extends React.Component {
 	constructor(props){
     super(props);
 	this.state = {
-		list: []
+		list: [],
+		stockList: []
 	}
 	this.addCash = this.addCash.bind(this);
 	this.deleteItem = this.deleteItem.bind(this);
@@ -27,11 +28,13 @@ class Financials extends React.Component {
 	this.setState({list:this.state.list})
 	}
 
+
 	render(){
     return(
       <div>
         <ItemizedSchedulesOfCashList deleteItem={this.deleteItem} cashlist={this.state.list} />
         <ItemiziedSchedules addCash={this.addCash} />
+        <ItemiziedStockBondsForm addStocks={this.addStocks}  />
       </div>
     )
 }

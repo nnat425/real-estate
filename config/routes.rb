@@ -16,5 +16,7 @@ Rails.application.routes.draw do
 
 	resources :listings, only: [:index, :create, :destroy, :update]
 	resources :schedule_of_cashes, only: [:index, :create, :destroy, :update]
+	resources :schedule_of_stocks, only: [:index, :create, :destroy, :update]
+
 
   end

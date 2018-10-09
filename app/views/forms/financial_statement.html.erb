@@ -220,8 +220,8 @@ body {margin-top: 0px;margin-left: 0px;}
 <TR>
 	<TD class="tr2 td6"><P class="p4 ft4">Cash in banks</P></TD>
 	<TD class="tr2 td13"><P class="p5 ft3">&nbsp;</P></TD>
-	<TD class="tr2 td9"><P class="p5 ft3">&nbsp;</P></TD>
-	<TD class="tr2 td9"><%= @test %><P class="p5 ft3">&nbsp;</P></TD>
+	<TD class="tr2 td9"><%= number_to_currency(@applicant_cash_in_banks) %><P class="p5 ft3">&nbsp;</P></TD>
+	<TD class="tr2 td9"><%= number_to_currency(@co_applicant_cash_in_banks) %><P class="p5 ft3">&nbsp;</P></TD>
 	<TD class="tr2 td14"><P class="p6 ft4">Notes Payable:</P></TD>
 	<TD class="tr2 td11"><P class="p5 ft3">&nbsp;</P></TD>
 	<TD class="tr2 td15"><P class="p5 ft3">&nbsp;</P></TD>
